@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="VS Code logo">
+  <defs>
+    <linearGradient id="vsgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#29B6F6" />
+      <stop offset="100%" stop-color="#0288D1" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="32" fill="#0F172A" />
+  <g transform="translate(34 38)" fill="none" fill-rule="evenodd">
+    <path d="M147.6 0L78.8 50.6 38 30.4 0 54.5l39.4 30L0 114.5 38 138.6l40.8-20.2 68.8 50.6 30.4-17.9V17.9z" fill="url(#vsgrad)"/>
+    <path d="M147.6 0L78.8 50.6V118l68.8 50.6 30.4-17.9V17.9z" fill="#0A84C1"/>
+    <path d="M39.4 84.5L78.8 118V50.6z" fill="#50C7F0"/>
+  </g>
+</svg>

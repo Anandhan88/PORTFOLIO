@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64" role="img" aria-label="ANAND logo">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <!-- Monogram A -->
+  <g transform="translate(8,4)">
+    <path d="M16 48 L32 8" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M48 48 L32 8" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
+    <path d="M24 32 L40 32" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
+  </g>
+  <!-- Wordmark -->
+  <g transform="translate(80,0)">
+    <text x="0" y="46" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="2">ANAND</text>
+  </g>
+</svg>

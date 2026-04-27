@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Java logo">
+  <defs>
+    <linearGradient id="jblue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A75B0" />
+      <stop offset="100%" stop-color="#1B588D" />
+    </linearGradient>
+    <linearGradient id="jred" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E24F3B" />
+      <stop offset="100%" stop-color="#C93528" />
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="16" fill="#0F172A" />
+  <g transform="translate(20 16)">
+    <path d="M44.5 0c4.5 14-12.8 20.6-12.8 31.5 0 7.5 7.7 12 7.7 12s-13-2.2-13-14.5C26.5 18 40.7 12.7 44.5 0z" fill="url(#jred)"/>
+    <path d="M64.2 22c3.8 9.9-14.6 15.4-14.6 23.6 0 6 6.5 9.6 6.5 9.6s-11-1.9-11-11.7c0-10.2 14.8-11.6 19-21.5z" fill="url(#jred)" opacity="0.92"/>
+    <path d="M27.5 54.2c-3.5 1-5.9 2.3-5.9 3.8 0 6.5 33.7 6.6 45.1 1.4 3.5-1.6 3.4-3.7-0.2-6.2-6.4 1.3-13.5 2-20.1 2-7.5 0-14.8-.8-19-1.8z" fill="url(#jblue)"/>
+    <path d="M26.2 64c-4.5 1.3-7.4 3-7.4 4.8 0 8.2 38.8 8.2 52 1.8 4-1.9 4-4.3 0-7-7.2 1.6-15.2 2.4-23.2 2.4-8.5 0-17-.9-21.4-2z" fill="url(#jblue)" opacity="0.9"/>
+    <path d="M25 75.6c-5.4 1.5-8.9 3.7-8.9 6.1 0 10.5 49 10.6 65.7 2.2 4.7-2.3 4.7-5.2 0-8.3-8.8 2-18.5 3-28.3 3-10.3 0-20.4-1-28.5-3z" fill="url(#jblue)" opacity="0.82"/>
+    <path d="M72.4 43.5c3.7 0 6.7 1.5 6.7 3.4s-3 3.4-6.7 3.4-6.7-1.5-6.7-3.4 3-3.4 6.7-3.4z" fill="#E24F3B" opacity="0.85"/>
+  </g>
+</svg>
