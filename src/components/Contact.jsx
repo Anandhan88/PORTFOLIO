@@ -3,29 +3,54 @@ import { motion } from 'framer-motion';
 import * as FiIcons from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
+import { supabase, isSupabaseReady } from '../supabaseClient';
 
-const { FiMail, FiLinkedin, FiGithub, FiCode, FiSend, FiMapPin, FiCheck } = FiIcons;
+const { FiMail, FiLinkedin, FiGithub, FiCode, FiSend, FiMapPin, FiCheck, FiAlertCircle } = FiIcons;
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (error) setError(null);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
+    setError(null);
+
+    if (!isSupabaseReady) {
+      setError('Contact form is not configured yet. Please reach out via email directly.');
       setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const { error: supabaseError } = await supabase
+        .from('contacts')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          },
+        ]);
+
+      if (supabaseError) throw supabaseError;
+
       setIsSuccess(true);
-      console.log('Form submitted:', formData);
       setFormData({ name: '', email: '', message: '' });
       setTimeout(() => setIsSuccess(false), 3000);
-    }, 1500);
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('Something went wrong. Please try again or reach out via email.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -116,6 +141,17 @@ const Contact = () => {
                   />
                 </div>
 
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm"
+                  >
+                    <SafeIcon icon={FiAlertCircle} className="w-4 h-4 shrink-0" />
+                    {error}
+                  </motion.div>
+                )}
+
                 <motion.button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
@@ -125,7 +161,7 @@ const Contact = () => {
                   className={`btn-3d w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-white transition-all duration-300 ${isSuccess ? 'bg-green-600' : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-lg hover:shadow-blue-500/25'}`}
                 >
                   {isSubmitting ? (
-                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full" />
+                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : isSuccess ? (
                     <>
                       <SafeIcon icon={FiCheck} className="w-5 h-5" />
