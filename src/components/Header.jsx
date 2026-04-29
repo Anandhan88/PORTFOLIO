@@ -8,44 +8,36 @@ const { FiMenu, FiX, FiSun, FiMoon } = FiIcons;
 
 const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
   const headerRef = useRef(null);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     let ticking = false;
-    
+
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const header = headerRef.current;
-          if (!header) {
-            ticking = false;
-            return;
-          }
-          
           const currentScrollY = window.scrollY;
-          
-          // Hide nav buttons when scrolled past threshold
-          if (currentScrollY > 100) {
-            header.classList.add('hide-nav-buttons');
+
+          if (currentScrollY > lastScrollY && currentScrollY > 60) {
+            // Scrolling DOWN — hide nav icons
+            setNavVisible(false);
           } else {
-            header.classList.remove('hide-nav-buttons');
+            // Scrolling UP — show nav icons immediately
+            setNavVisible(true);
           }
-          
+
+          lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
       }
     };
 
-    // Initial check
-    onScroll();
-
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
-      if (headerRef.current) {
-        headerRef.current.classList.remove('hide-nav-buttons');
-      }
     };
   }, []);
 
@@ -117,7 +109,12 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1 relative ml-auto pr-2 md:pr-4" style={{ transformStyle: 'preserve-3d' }}>
+          <motion.nav
+            className="hidden md:flex items-center space-x-1 relative ml-auto pr-2 md:pr-4"
+            style={{ transformStyle: 'preserve-3d' }}
+            animate={navVisible ? { opacity: 1, y: 0, pointerEvents: 'auto' } : { opacity: 0, y: -12, pointerEvents: 'none' }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+          >
             {navItems.map((item, index) => (
               <motion.a
                 key={item.id}
@@ -162,7 +159,7 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
             >
               <SafeIcon icon={theme === 'dark' ? FiSun : FiMoon} className="w-5 h-5" />
             </motion.button>
-          </nav>
+          </motion.nav>
 
           {/* Mobile Menu Button */}
           <motion.button
