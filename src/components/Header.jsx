@@ -109,20 +109,20 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <motion.nav
+          <div
+            style={{
+              opacity: navVisible ? 1 : 0,
+              transform: navVisible ? 'translateY(0)' : 'translateY(-14px)',
+              pointerEvents: navVisible ? 'auto' : 'none',
+              transition: 'opacity 0.25s ease, transform 0.25s ease',
+            }}
             className="hidden md:flex items-center space-x-1 relative ml-auto pr-2 md:pr-4"
-            style={{ transformStyle: 'preserve-3d' }}
-            animate={navVisible ? { opacity: 1, y: 0, pointerEvents: 'auto' } : { opacity: 0, y: -12, pointerEvents: 'none' }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
           >
             {navItems.map((item, index) => (
               <motion.a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => { scrollToSection(item.id); }}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
                 whileHover={{ 
                   scale: 1.08,
                   y: -4,
@@ -159,7 +159,7 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
             >
               <SafeIcon icon={theme === 'dark' ? FiSun : FiMoon} className="w-5 h-5" />
             </motion.button>
-          </motion.nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <motion.button
