@@ -76,7 +76,7 @@ html {
 
 /* Ensure anchored scroll accounts for fixed header */
 section[id] {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 body {

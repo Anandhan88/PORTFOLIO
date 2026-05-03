@@ -60,8 +60,9 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
       return;
     }
 
-    const headerOffset = (headerEl?.offsetHeight || 72) + 6;
-    const targetTop = Math.max(element.offsetTop - headerOffset, 0);
+    const headerHeight = headerEl?.getBoundingClientRect().height || 72;
+    const elementTop = element.getBoundingClientRect().top + window.scrollY;
+    const targetTop = Math.max(elementTop - headerHeight - 8, 0);
 
     try {
       window.scrollTo({ top: targetTop, behavior: 'smooth' });

@@ -21,9 +21,9 @@ export const useProjectAnimations = (containerRef) => {
           duration: 1,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: card,
+            trigger: containerRef.current,
             start: 'top 80%',
-            toggleActions: 'play none none reverse',
+            toggleActions: 'play none none none',
           },
         });
       });
@@ -36,9 +36,9 @@ export const useProjectAnimations = (containerRef) => {
           duration: 0.4,
           ease: 'back.out(1.7)',
           scrollTrigger: {
-            trigger: badge,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse',
+            trigger: containerRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
           },
         });
       });
