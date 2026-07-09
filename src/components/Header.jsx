@@ -9,26 +9,45 @@ const { FiMenu, FiX, FiSun, FiMoon } = FiIcons;
 const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const headerRef = useRef(null);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
+    const threshold = 15; // scroll delta threshold in pixels to prevent flickering
 
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
 
-          if (currentScrollY > lastScrollY && currentScrollY > 60) {
-            // Scrolling DOWN — hide nav icons
-            setNavVisible(false);
-          } else {
-            // Scrolling UP — show nav icons immediately
+          // Pin visible at the very top of the page
+          if (currentScrollY < 10) {
+            setIsHeaderVisible(true);
             setNavVisible(true);
+            lastScrollY = currentScrollY; // Reset last scroll tracker
+          }
+          // Bypass hide scroll logic if the mobile menu is open
+          else if (isMenuOpen) {
+            setIsHeaderVisible(true);
+            setNavVisible(true);
+            lastScrollY = currentScrollY; // Reset last scroll tracker
+          }
+          // Threshold check to filter noise and accumulate distance
+          else if (Math.abs(currentScrollY - lastScrollY) > threshold) {
+            if (currentScrollY > lastScrollY && currentScrollY > 60) {
+              // Scrolling DOWN
+              setIsHeaderVisible(false);
+              setNavVisible(false);
+            } else {
+              // Scrolling UP
+              setIsHeaderVisible(true);
+              setNavVisible(true);
+            }
+            lastScrollY = currentScrollY; // Update scroll position ONLY when threshold is exceeded
           }
 
-          lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
@@ -39,7 +58,7 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [isMenuOpen]);
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -78,14 +97,16 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
       ref={headerRef}
       id="site-header"
       initial={{ y: 0 }}
-      animate={{ y: 0 }}
+      animate={{ y: isHeaderVisible ? 0 : -80 }}
+      transition={{ duration: 0.35, ease: 'easeInOut' }}
       className="fixed top-0 left-0 right-0 z-50 glass-nav"
       style={{
+        position: 'fixed',
         transformStyle: 'preserve-3d',
         perspective: '1000px'
       }}
     >
-      <div className="w-full px-4 md:px-10 py-4">
+      <div className="w-full px-4 md:px-10 py-2.5">
         <div className="flex items-center justify-end gap-2 md:gap-4 w-full">
           <motion.div
             initial={{ opacity: 0, x: -20, rotateY: -15 }}
@@ -105,7 +126,7 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
             }}
           >
             <AnandLogo
-              className="w-48 h-48"
+              className="h-10 w-auto"
             />
           </motion.div>
 
