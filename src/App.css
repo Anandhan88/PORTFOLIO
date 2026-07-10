@@ -925,3 +925,25 @@ body.scroll-down #site-header {
 .theme-light #resume .glass-panel .absolute.inset-0 {
   background: rgba(59, 130, 246, 0.03) !important;
 }
+
+/* Horizontal scrollbar hide helper */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Pulse glow animation for carousel control side arrows */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), 0 0 5px rgba(56, 189, 248, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.45), 0 0 15px rgba(56, 189, 248, 0.25);
+  }
+}
+.animate-pulse-glow:hover {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
