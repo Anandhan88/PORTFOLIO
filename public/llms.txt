@@ -1,0 +1,25 @@
+# Anandhan S - Developer Portfolio
+
+> Anandhan S is an AI & Data Science Engineering student, Full Stack Developer, and Machine Learning practitioner specializing in React.js, Node.js, Python, TensorFlow, PyTorch, and modern web application development.
+
+## About
+Anandhan S builds intelligent web applications, computer vision quality assessment systems, and scalable full-stack platforms. He focuses on combining sleek modern UI design with robust backend machine learning models.
+
+## Key Projects
+- [SMART COIR](https://github.com/Anandhan88/COIR): AI-powered quality assessment and computer vision processing system for coir fiber manufacturing.
+- [GeoGuard AI](https://github.com/Anandhan88/GeoGuard-AI): Real-time spatial hazard detection, geospatial analytics, and disaster management dashboard.
+- [Brain Tumor Detector](https://github.com/Anandhan88/Brain-Tumor-detector): Deep learning MRI classification model built with PyTorch, Flask, and React.
+- [AARAA INFRA](https://github.com/Anandhan88/AARAA-INFRA): Modern infrastructure management & client request platform.
+- [URL Shortener](https://github.com/Anandhan88/URL-Shortener): High-performance microservice with analytical tracking and custom link generation.
+
+## Technical Skills
+- **Languages**: Python, JavaScript (ES6+), C++, Java, SQL, HTML5, CSS3
+- **Frontend & Styling**: React.js, Vite, TailwindCSS, Framer Motion, GSAP
+- **Backend & AI/ML**: Node.js, Express, Flask, PyTorch, TensorFlow, OpenCV, Supabase
+- **Tools & Platforms**: Git, GitHub, Docker, Vercel, VS Code
+
+## Social & Contact Links
+- [GitHub Profile](https://github.com/Anandhan88): Open-source repositories and contributions.
+- [LinkedIn Profile](https://www.linkedin.com/in/anandhan18): Professional network and profile.
+- [LeetCode Profile](https://leetcode.com/u/Anandhan88/): Competitive programming and data structure solutions.
+- [Email Contact](mailto:anand.settu2006@gmail.com): Direct email contact.

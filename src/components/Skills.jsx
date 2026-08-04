@@ -248,6 +248,9 @@ const Skills = () => {
                           <Icon
                             className="text-2xl shrink-0"
                             style={{ color: skill.color }}
+                            aria-label={skill.name}
+                            title={skill.name}
+                            role="img"
                           />
                         )
                       )}
