@@ -13,8 +13,30 @@ export default defineConfig({
   server: {
     historyApiFallback: true,
   },
-   build: {
+  build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('framer-motion') || id.includes('motion')) {
+              return 'vendor-framer';
+            }
+            if (id.includes('gsap') || id.includes('split-type')) {
+              return 'vendor-gsap';
+            }
+            if (id.includes('react-icons')) {
+              return 'vendor-icons';
+            }
+            return 'vendor-deps';
+          }
+        }
+      }
+    }
   },
 });

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import AnandLogo from './AnandLogo.jsx';
-
-const { FiMenu, FiX, FiSun, FiMoon } = FiIcons;
+import { AnimatedThemeToggler } from '@/registry/magicui/animated-theme-toggler';
 
 const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -172,15 +171,12 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
                 {item.label}
               </motion.a>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.15, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onToggleTheme}
-              className="ml-2 px-3 py-2 rounded-full border border-slate-700/60 bg-slate-800/60 text-slate-300 hover:text-cyan-400 hover:border-slate-500 transition-colors"
-              aria-label="Toggle theme"
-            >
-              <SafeIcon icon={theme === 'dark' ? FiSun : FiMoon} className="w-5 h-5" />
-            </motion.button>
+            <AnimatedThemeToggler
+              variant="diamond"
+              theme={theme}
+              onToggle={onToggleTheme}
+              className="ml-2"
+            />
           </div>
 
           {/* Mobile Menu Button */}

@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiHeart, FiGithub, FiLinkedin, FiMail, FiCode } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-
-const { FiHeart, FiGithub, FiLinkedin, FiMail, FiCode } = FiIcons;
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

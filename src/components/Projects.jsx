@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiActivity, FiUsers, FiExternalLink, FiGithub, FiLayers, FiChevronLeft, FiChevronRight, FiLink, FiCpu, FiShield } from 'react-icons/fi';
+import { LuBrain } from 'react-icons/lu';
 import SafeIcon from '../common/SafeIcon';
 import { useProjectAnimations, applyProjectHoverEffects } from '../hooks/useProjectAnimations';
 import { useTiltEffect } from '../hooks/useTiltEffect';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
-
-const { FiBrain, FiActivity, FiUsers, FiExternalLink, FiGithub, FiLayers, FiChevronLeft, FiChevronRight, FiLink, FiCpu, FiShield } = FiIcons;
 
 const Projects = () => {
   const containerRef = useRef(null);
@@ -78,10 +77,10 @@ const Projects = () => {
       subtitle: 'Full Stack Deep Learning App',
       description: 'Built a medical application capable of analyzing brain MRI scans using TensorFlow and Keras. Implemented deep learning for classification with real-time model API processing integrated with React frontend.',
       tech: ['TensorFlow', 'Keras', 'React', 'Flask', 'Deep Learning'],
-      icon: FiBrain,
+      icon: LuBrain,
       color: 'pink',
-      liveUrl: 'https://github.com/Anandhan88/Brain-Tumor-Detection',
-      codeUrl: 'https://github.com/Anandhan88/Brain-Tumor-Detection'
+      liveUrl: 'https://github.com/Anandhan88/NEURODX',
+      codeUrl: 'https://github.com/Anandhan88/NEURODX.git'
     },
     {
       id: 3,
@@ -91,8 +90,8 @@ const Projects = () => {
       tech: ['React', 'Node.js', 'MongoDB', 'Flutter', 'AI Integration'],
       icon: FiUsers,
       color: 'blue',
-      liveUrl: 'https://github.com/Anandhan88/FarmConnect',
-      codeUrl: 'https://github.com/Anandhan88/FarmConnect'
+      liveUrl: 'https://github.com/Anandhan88/FARM-CONNECT',
+      codeUrl: 'https://github.com/Anandhan88/FARM-CONNECT.git'
     },
     {
       id: 4,
@@ -102,8 +101,8 @@ const Projects = () => {
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'Docker', 'Nginx', 'JWT'],
       icon: FiLayers,
       color: 'purple',
-      liveUrl: 'https://github.com/Anandhan88/AARAA-INFRA',
-      codeUrl: 'https://github.com/Anandhan88/AARAA-INFRA'
+      liveUrl: 'https://github.com/Anandhan88/AARA-INFRA',
+      codeUrl: 'https://github.com/Anandhan88/AARA-INFRA.git'
     },
     {
       id: 5,
@@ -113,8 +112,8 @@ const Projects = () => {
       tech: ['Golang', 'Gin', 'HTML', 'CSS', 'JavaScript', 'SQLite'],
       icon: FiLink,
       color: 'cyan',
-      liveUrl: 'https://github.com/Anandhan88/URL-Shortener',
-      codeUrl: 'https://github.com/Anandhan88/URL-Shortener'
+      liveUrl: 'https://github.com/Anandhan88/go-url-shortener',
+      codeUrl: 'https://github.com/Anandhan88/go-url-shortener.git'
     },
     {
       id: 6,
@@ -124,8 +123,8 @@ const Projects = () => {
       tech: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.IO', 'Three.js'],
       icon: FiCpu,
       color: 'amber',
-      liveUrl: 'https://github.com/Anandhan88/SMART-COIR',
-      codeUrl: 'https://github.com/Anandhan88/SMART-COIR'
+      liveUrl: 'https://github.com/Anandhan88/SMART_COIR',
+      codeUrl: 'https://github.com/Anandhan88/SMART_COIR.git'
     },
     {
       id: 7,
@@ -136,7 +135,7 @@ const Projects = () => {
       icon: FiShield,
       color: 'emerald',
       liveUrl: 'https://github.com/Anandhan88/GeoGuard',
-      codeUrl: 'https://github.com/Anandhan88/GeoGuard'
+      codeUrl: 'https://github.com/Anandhan88/GeoGuard.git'
     }
   ];
 

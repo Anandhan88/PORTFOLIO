@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiDownload, FiMail, FiGithub, FiLinkedin, FiCode, FiTerminal } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import { useHeroAnimation } from '../hooks/useHeroAnimation';
 import { useHeroNameAnimation } from '../hooks/useTextAnimations';
 import { applyButtonAnimations } from '../hooks/useButtonAnimations';
-
-const { FiDownload, FiMail, FiGithub, FiLinkedin, FiCode, FiTerminal } = FiIcons;
 
 const TypewriterText = ({ text, delay = 0 }) => {
   const [displayText, setDisplayText] = useState('');

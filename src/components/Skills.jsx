@@ -1,15 +1,21 @@
 import { useCallback, useEffect, useMemo, useRef, useState, memo } from "react";
-import * as SiIcons from 'react-icons/si';
-import * as FiIcons from 'react-icons/fi';
+import { 
+  SiPython, SiJavascript, SiR, SiHtml5, SiCss3, SiReact, 
+  SiNodedotjs, SiMongodb, SiTensorflow, SiGit, SiCanva, 
+  SiTypescript, SiNextdotjs, SiReactrouter, SiTailwindcss,
+  SiFramer, SiVite, SiExpress, SiSocketdotio, SiFlask, SiDocker, SiPostman
+} from 'react-icons/si';
+import { FaJava } from 'react-icons/fa6';
+import { FiCode, FiGlobe, FiCpu, FiBarChart2 } from 'react-icons/fi';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
 
-const { 
-  SiPython, SiJavascript, SiJava, SiR, SiHtml5, SiCss3, SiReact, 
-  SiNodedotjs, SiMongodb, SiTensorflow, SiGit, SiPowerbi, SiCanva, 
-  SiVisualstudiocode, SiTypescript, SiNextdotjs, SiReactrouter, SiTailwindcss,
-  SiFramer, SiVite, SiExpress, SiSocketdotio, SiFlask, SiDocker, SiPostman
-} = SiIcons;
-const { FiCode, FiGlobe, FiCpu } = FiIcons;
+const iconMap = {
+  SiPython, SiJavascript, SiJava: FaJava, SiR, SiHtml5, SiCss3, SiReact, 
+  SiNodedotjs, SiMongodb, SiTensorflow, SiGit, SiPowerbi: FiBarChart2, SiCanva, 
+  SiVisualstudiocode: FiCode, SiTypescript, SiNextdotjs, SiReactrouter, SiTailwindcss,
+  SiFramer, SiVite, SiExpress, SiSocketdotio, SiFlask, SiDocker, SiPostman,
+  FaJava, FiCode, FiGlobe, FiCpu, FiBarChart2
+};
 
 /* ================== LogoLoop Component ================== */
 
@@ -128,7 +134,7 @@ const Skills = () => {
   const skills = [
     { name: "Python", icon: SiPython, color: "#3776AB" },
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
-    { name: "Java", icon: SiJava, color: "#007396" },
+    { name: "Java", icon: FaJava, color: "#007396" },
     { name: "R", icon: SiR, color: "#276DC3" },
     { name: "HTML", icon: SiHtml5, color: "#E34F26" },
     { name: "CSS", icon: SiCss3, color: "#1572B6" },
@@ -138,9 +144,9 @@ const Skills = () => {
     { name: "Machine Learning", icon: FiCpu, color: "#FF6F00" },
     { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
     { name: "Git", icon: SiGit, color: "#F05032" },
-    { name: "Power BI", icon: SiPowerbi, color: "#F2C811" },
+    { name: "Power BI", icon: FiBarChart2, color: "#F2C811" },
     { name: "Canva", icon: SiCanva, color: "#00C4CC" },
-    { name: "VS Code", icon: SiVisualstudiocode, color: "#007ACC" }
+    { name: "VS Code", icon: FiCode, color: "#007ACC" }
   ];
 
   const skillCategories = [
@@ -223,7 +229,7 @@ const Skills = () => {
                 {category.skills.map((skill) => {
                   const iconCandidate = skill.icon;
                   const Icon = typeof iconCandidate === 'string'
-                    ? (SiIcons[iconCandidate] || FiIcons[iconCandidate] || FiCode)
+                    ? (iconMap[iconCandidate] || FiCode)
                     : iconCandidate;
                   return (
                     <div

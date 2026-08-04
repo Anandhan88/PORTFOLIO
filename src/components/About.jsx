@@ -1,10 +1,9 @@
 import React from 'react';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
 import { motion } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiUser, FiHeart, FiTarget, FiTrendingUp } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-
-const { FiUser, FiHeart, FiTarget, FiTrendingUp } = FiIcons;
+import CountUp from './CountUp';
 
 const About = () => {
   const containerVariants = {
@@ -43,8 +42,8 @@ const About = () => {
           <div className="grid md:grid-cols-2 gap-10">
             {/* Left Column */}
             <motion.div variants={cardVariants} className="space-y-8" style={{ transformStyle: 'preserve-3d' }}>
-              <motion.div 
-                whileHover={{ 
+              <motion.div
+                whileHover={{
                   y: -8,
                   z: 20,
                   rotateY: 2,
@@ -61,7 +60,7 @@ const About = () => {
                 }}
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.2, rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
                     className="p-3 bg-cyan-500/20 rounded-xl"
                   >
@@ -70,14 +69,14 @@ const About = () => {
                   <h3 className="text-2xl font-semibold text-white">Who I Am</h3>
                 </div>
                 <p className="text-slate-200 leading-relaxed text-lg font-semibold">
-                  A passionate student developer merging AI with modern web 
-                  technologies. Building intelligent applications using React, Next.js, and 
+                  A passionate student developer merging AI with modern web
+                  technologies. Building intelligent applications using React, Next.js, and
                   Machine Learning to create innovative solutions.
                 </p>
               </motion.div>
 
-              <motion.div 
-                whileHover={{ 
+              <motion.div
+                whileHover={{
                   y: -8,
                   z: 20,
                   rotateY: -2,
@@ -93,7 +92,7 @@ const About = () => {
                 }}
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <motion.div 
+                  <motion.div
                     whileHover={{ scale: 1.2, rotate: [0, -5, 5, -5, 0], transition: { duration: 0.5 } }}
                     className="p-3 bg-purple-500/10 rounded-xl"
                   >
@@ -102,7 +101,7 @@ const About = () => {
                   <h3 className="text-2xl font-semibold text-white">My Passion</h3>
                 </div>
                 <p className="text-slate-200 leading-relaxed text-lg font-semibold">
-                  Coding isn't just a skill for me — it's my passion and future. 
+                  Coding isn't just a skill for me — it's my passion and future.
                   I believe in creating solutions that make a real difference in people's lives.
                 </p>
               </motion.div>
@@ -112,8 +111,8 @@ const About = () => {
             <motion.div variants={cardVariants} className="space-y-8">
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { icon: FiTarget, label: "Projects", value: "10+", color: "text-blue-400", bg: "bg-blue-500/10" },
-                  { icon: FiTrendingUp, label: "Technologies", value: "15+", color: "text-pink-400", bg: "bg-pink-500/10" }
+                  { icon: FiTarget, label: "Projects", value: 10, suffix: "+", color: "text-blue-400", bg: "bg-blue-500/10" },
+                  { icon: FiTrendingUp, label: "Technologies", value: 15, suffix: "+", color: "text-pink-400", bg: "bg-pink-500/10" }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -124,12 +123,14 @@ const About = () => {
                       <SafeIcon icon={stat.icon} className={`w-7 h-7 ${stat.color}`} />
                     </div>
                     <h4 className="text-slate-300 font-medium mb-1">{stat.label}</h4>
-                    <p className={`text-4xl font-bold ${stat.color}`}>{stat.value}</p>
+                    <p className={`text-4xl font-bold ${stat.color}`}>
+                      <CountUp from={0} to={stat.value} duration={2} separator="," />{stat.suffix}
+                    </p>
                   </motion.div>
                 ))}
               </div>
 
-              <motion.div 
+              <motion.div
                 whileHover={{ y: -5 }}
                 className="glass-panel rounded-3xl p-8 border border-white/5 bg-gradient-to-br from-white/5 to-transparent"
               >

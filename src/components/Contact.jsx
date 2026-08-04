@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiMail, FiLinkedin, FiGithub, FiCode, FiSend, FiMapPin, FiCheck, FiAlertCircle } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
 import { supabase, isSupabaseReady } from '../supabaseClient';
-
-const { FiMail, FiLinkedin, FiGithub, FiCode, FiSend, FiMapPin, FiCheck, FiAlertCircle } = FiIcons;
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

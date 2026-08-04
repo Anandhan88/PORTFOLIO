@@ -35,5 +35,11 @@ export const certificatesData = [
     title: "Oracle APEX Cloud Developer 2025 Certified Professional",
     company: "Oracle University",
     year: "May 2025"
+  },
+  {
+    image: "/assets/c7.png.png",
+    title: "Oracle Certified Professional: Java SE 17 Developer",
+    company: "Oracle University",
+    year: "February 2026"
   }
 ];

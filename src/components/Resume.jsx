@@ -1,10 +1,8 @@
 import React from 'react';
 import { useScrollRevealGSAP } from '../hooks/useScrollRevealGSAP';
 import { motion } from 'framer-motion';
-import * as FiIcons from 'react-icons/fi';
+import { FiDownload, FiFileText, FiAward, FiBookOpen, FiCheck } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
-
-const { FiDownload, FiFileText, FiAward, FiBookOpen, FiCheck } = FiIcons;
 
 const Resume = () => {
   const headingRef = useScrollRevealGSAP({ enableBlur: true, baseOpacity: 0.15, baseRotation: 2 });
@@ -86,15 +84,15 @@ const Resume = () => {
                 <ul className="space-y-2">
                   <li className="flex items-center gap-3 text-slate-300">
                     <span className="w-1.5 h-1.5 bg-pink-500 rounded-full" />
-                    10+ Successful Projects
+                    BYTS INDIA Hackathon 2025 — Best Implementation Award
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <span className="w-1.5 h-1.5 bg-pink-500 rounded-full" />
-                    Full-Stack Development
+                    MADATHON — 8-hour Intra College Hackathon
                   </li>
                   <li className="flex items-center gap-3 text-slate-300">
                     <span className="w-1.5 h-1.5 bg-pink-500 rounded-full" />
-                    ML Model Implementation
+                    Full-Stack & Machine Learning Projects
                   </li>
                 </ul>
               </div>
