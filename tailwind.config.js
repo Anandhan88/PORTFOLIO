@@ -6,23 +6,33 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        'neon': {
-          'cyan': '#00d9ff',
-          'pink': '#ff006e',
-          'purple': '#a000ff',
-          'green': '#00ff88',
-          'orange': '#ff6b00',
-        },
-        'dark': {
-          'bg': '#0a0e27',
-          'card': '#121d3f',
-          'border': '#1e2749',
-        }
+      fontFamily: {
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
+        display: ['"Outfit"', '"Space Grotesk"', 'sans-serif'],
+        mono: ['"Space Grotesk"', 'Courier New', 'monospace'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        'onyx': {
+          DEFAULT: '#0a0a0a',
+          '900': '#0a0a0a',
+          '800': '#121212',
+          '700': '#1a1a1a',
+          '600': '#262626',
+        },
+        'bone': {
+          DEFAULT: '#f9f8f6',
+          '100': '#ffffff',
+          '200': '#f9f8f6',
+          '300': '#f0eee9',
+          '400': '#e2ded4',
+        },
+        'editorial': {
+          'silver': '#e2e8f0',
+          'accent': '#ffffff',
+          'muted': '#a3a3a3',
+          'border': '#262626',
+        }
       }
     }
   },

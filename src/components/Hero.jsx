@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { FiDownload, FiMail, FiGithub, FiLinkedin, FiCode, FiTerminal } from 'react-icons/fi';
+import { FiDownload, FiMail, FiGithub, FiLinkedin, FiCode, FiArrowRight } from 'react-icons/fi';
 import SafeIcon from '../common/SafeIcon';
 import { useHeroAnimation } from '../hooks/useHeroAnimation';
 import { useHeroNameAnimation } from '../hooks/useTextAnimations';
@@ -12,7 +12,6 @@ const TypewriterText = ({ text, delay = 0 }) => {
   useEffect(() => {
     let currentText = '';
     let currentIndex = 0;
-    
     let intervalId;
 
     const timeoutId = setTimeout(() => {
@@ -24,14 +23,12 @@ const TypewriterText = ({ text, delay = 0 }) => {
         } else {
           clearInterval(intervalId);
         }
-      }, 50); // Typing speed
+      }, 40);
     }, delay);
 
     return () => {
       clearTimeout(timeoutId);
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
+      if (intervalId) clearInterval(intervalId);
     };
   }, [text, delay]);
 
@@ -40,9 +37,6 @@ const TypewriterText = ({ text, delay = 0 }) => {
 
 const Hero = () => {
   const containerRef = useRef(null);
-  const [ParticlesComponent, setParticlesComponent] = useState(null);
-  const enableParticles = false; // disable by default to keep initial load snappy
-  
   useHeroAnimation(containerRef);
   useHeroNameAnimation(containerRef);
 
@@ -52,206 +46,89 @@ const Hero = () => {
       ? requestIdleCallback(run, { timeout: 300 })
       : setTimeout(run, 150);
     return () => {
-      if (window.cancelIdleCallback && idleId) {
-        cancelIdleCallback(idleId);
-      } else {
-        clearTimeout(idleId);
-      }
+      if (window.cancelIdleCallback && idleId) cancelIdleCallback(idleId);
+      else clearTimeout(idleId);
     };
   }, []);
 
-  useEffect(() => {
-    if (!enableParticles) return;
-    // Lazy-load particles on idle and skip for mobile or reduced-motion users
-    if (typeof window === 'undefined') return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-    if (prefersReducedMotion || isMobile) return;
-
-    let isCancelled = false;
-
-    const loadParticles = async () => {
-      try {
-        const [{ default: Particles }, { loadSlim }] = await Promise.all([
-          import('@tsparticles/react'),
-          import('@tsparticles/slim')
-        ]);
-
-        const particlesInit = async (engine) => {
-          await loadSlim(engine);
-        };
-
-        if (!isCancelled) {
-          setParticlesComponent(() => (props) => (
-            <Particles init={particlesInit} {...props} />
-          ));
-        }
-      } catch (error) {
-        console.error('Failed to load particles', error);
-      }
-    };
-
-    const idleId = window.requestIdleCallback
-      ? requestIdleCallback(loadParticles, { timeout: 800 })
-      : setTimeout(loadParticles, 400);
-
-    return () => {
-      isCancelled = true;
-      if (window.cancelIdleCallback && idleId) {
-        cancelIdleCallback(idleId);
-      } else {
-        clearTimeout(idleId);
-      }
-    };
-  }, []);
-
-  const particlesOptions = {
-    background: {
-      color: {
-        value: 'transparent',
-      },
-    },
-    fpsLimit: 30,
-    particles: {
-      color: {
-        value: ['#3b82f6', '#8b5cf6', '#ec4899'],
-      },
-      links: {
-        color: '#3b82f6',
-        distance: 110,
-        enable: true,
-        opacity: 0.08,
-        width: 0.8,
-      },
-      move: {
-        enable: true,
-        speed: 0.6,
-        direction: 'none',
-        random: false,
-        straight: false,
-        outModes: {
-          default: 'out',
-        },
-      },
-      number: {
-        density: {
-          enable: true,
-          area: 800,
-        },
-        value: 18,
-      },
-      opacity: {
-        value: 0.22,
-      },
-      shape: {
-        type: 'circle',
-      },
-      size: {
-        value: { min: 1, max: 2.5 },
-      },
-    },
-    detectRetina: false,
-  };
-
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    const headerEl = document.getElementById('site-header');
-    if (!element) return;
-
-    const headerOffset = (headerEl?.offsetHeight || 72) + 6;
-    const rect = element.getBoundingClientRect();
-    const targetTop = Math.max(rect.top + window.scrollY - headerOffset, 0);
-    try {
-      window.scrollTo({ top: targetTop, behavior: 'smooth' });
-    } catch (_) {
-      window.scrollTo(0, targetTop);
-      if (element?.scrollIntoView) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+  const quickStack = ['React.js', 'Python', 'Next.js', 'Node.js', 'TensorFlow', 'Tailwind CSS', 'MongoDB'];
 
   return (
-    <section ref={containerRef} id="home" className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden" data-scroll="section">
-      {/* Background Particles/Grid - Optional decorative element */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-      
-      {/* Particles Background */}
-      {/* Background particles disabled for performance */}
+    <section ref={containerRef} id="home" className="min-h-screen flex items-center justify-center pt-24 pb-16 relative overflow-hidden" data-scroll="section">
+      {/* Background Grid Accent */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,#000_70%,transparent_100%)] pointer-events-none" />
 
-      <div className="container mx-auto px-0 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="container mx-auto px-4 relative z-10 py-12">
+        <div className="max-w-5xl mx-auto text-center">
           
-          {/* Avatar / Icon */}
-          <div data-hero="icon" className="relative mb-12 inline-block perspective">
-            <div data-hero="icon-float" className="relative z-10 card-3d">
-              <div className="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-slate-900 to-slate-800 border-2 border-slate-700 flex items-center justify-center shadow-[0_0_40px_rgba(0,217,255,0.15),0_0_40px_rgba(160,0,255,0.08)]">
-                <SafeIcon icon={FiTerminal} className="w-20 h-20 text-cyan-400" />
-              </div>
-              {/* Spinning rings removed for performance */}
-            </div>
+          {/* Section Index Badge */}
+          <div className="inline-block mb-8 px-4 py-1 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/20">
+            01 // PORTFOLIO ARCHIVE & BIOGRAPHY
           </div>
 
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
-            <span data-hero="greeting" className="block">Hi, I'm</span>
-            <span className="text-gradient block">
-              Anandhan
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold mb-6 tracking-tight uppercase leading-tight">
+            <span data-hero="greeting" className="block text-sm sm:text-base md:text-lg font-mono tracking-[0.25em] text-neutral-400 mb-2 font-normal">PORTFOLIO OF</span>
+            <span className="block text-white theme-light:text-black font-display font-extrabold tracking-tight">
+              ANANDHAN S.
             </span>
           </h1>
 
           {/* Role Typewriter */}
           <div
             data-hero="role"
-            className="text-xl md:text-2xl text-blue-200/80 mb-8 font-mono bg-blue-900/10 inline-block px-4 py-2 rounded-lg border border-blue-500/10"
+            className="text-lg md:text-2xl text-cyan-400 mb-10 font-display font-semibold tracking-wide border-y border-neutral-800 theme-light:border-neutral-300 py-3 inline-block px-8"
           >
-            <span className="mr-2 text-blue-500">{'>'}</span>
-            <TypewriterText text="Full-Stack Developer | AI & Data Science Student" delay={800} />
+            <TypewriterText text="Full-Stack Developer & AI Data Science Scholar" delay={600} />
             <motion.span
               animate={{ opacity: [1, 0] }}
               transition={{ duration: 0.8, repeat: Infinity }}
-              className="inline-block w-2.5 h-5 bg-blue-500 ml-1 align-middle"
+              className="inline-block w-2 h-5 bg-cyan-400 ml-2 align-middle"
             />
           </div>
 
           {/* Description */}
           <p
             data-hero="description"
-            className="text-lg text-slate-200 max-w-2xl mx-auto mb-12 leading-relaxed font-semibold"
+            className="text-lg md:text-xl text-neutral-300 theme-light:text-neutral-700 max-w-3xl mx-auto mb-14 leading-relaxed font-sans"
           >
-            I love building intelligent and user-friendly applications. I learn new 
-            technologies quickly and use them to craft smart, real-world solutions. I 
-            code with logic and creativity — always curious, always improving.
+            Architecting intelligent digital platforms with algorithmic clarity and aesthetic rigor. 
+            Merging deep machine learning logic with full-stack craftsmanship to build impactful real-world software.
           </p>
 
           {/* CTA Buttons */}
           <div
             data-hero="buttons"
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center font-display"
           >
             <a href="/assets/resume.pdf" download className="relative">
-              <button data-anim="primary-btn" className="relative flex items-center gap-3 bg-transparent border border-blue-500 text-blue-500 px-8 py-4 rounded-full font-bold tracking-wide hover:bg-blue-500/30 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300">
+              <button data-anim="primary-btn" className="flex items-center gap-3 bg-cyan-400 text-black px-10 py-4 text-base tracking-wider hover:bg-cyan-300 transition-all duration-300 font-bold shadow-lg shadow-cyan-400/20">
                 <SafeIcon icon={FiDownload} data-anim="btn-icon" className="w-5 h-5" />
-                <span>Download CV</span>
+                <span>DOWNLOAD CURRICULUM VITAE</span>
               </button>
             </a>
             
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
               data-anim="primary-btn"
-              className="btn-3d group flex items-center gap-3 px-8 py-4 rounded-full font-bold tracking-wide text-white border border-slate-700 hover:border-blue-500/50 hover:bg-blue-500/30 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
+              className="flex items-center gap-3 px-10 py-4 text-base tracking-wider text-white theme-light:text-black border border-neutral-700 theme-light:border-neutral-300 hover:border-cyan-400 hover:text-cyan-400 transition-all duration-300 font-bold"
             >
               <SafeIcon icon={FiMail} data-anim="btn-icon" className="w-5 h-5" />
-              <span>Contact Me</span>
+              <span>INITIATE CONTACT</span>
             </a>
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-6 mt-16">
+          <div className="flex justify-center gap-8 mt-16 border-t border-neutral-800 theme-light:border-neutral-200 pt-10 max-w-md mx-auto">
             {[
-              { icon: FiGithub, href: 'https://github.com/Anandhan88', label: 'GitHub' },
-              { icon: FiLinkedin, href: 'https://www.linkedin.com/in/anandhan18', label: 'LinkedIn' },
-              { icon: FiCode, href: 'https://leetcode.com/u/Anandhan88/', label: 'LeetCode' }
-            ].map((social, index) => (
+              { icon: FiGithub, href: 'https://github.com/Anandhan88', label: 'GITHUB' },
+              { icon: FiLinkedin, href: 'https://www.linkedin.com/in/anandhan18', label: 'LINKEDIN' },
+              { icon: FiCode, href: 'https://leetcode.com/u/Anandhan88/', label: 'LEETCODE' }
+            ].map((social) => (
               <a
                 data-hero="social"
                 data-anim="social-icon"
@@ -259,10 +136,11 @@ const Hero = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 bg-slate-900/40 rounded-xl text-white hover:text-cyan-400 hover:bg-cyan-500/30 hover:border-cyan-500 hover:shadow-lg hover:shadow-cyan-500/30 border border-transparent transition-all duration-300"
+                className="text-neutral-400 theme-light:text-neutral-600 hover:text-cyan-400 transition-colors font-mono text-xs tracking-widest flex items-center gap-2"
                 title={social.label}
               >
-                <SafeIcon icon={social.icon} className="w-6 h-6" />
+                <SafeIcon icon={social.icon} className="w-4 h-4" />
+                <span>{social.label}</span>
               </a>
             ))}
           </div>

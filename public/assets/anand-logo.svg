@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="64" viewBox="0 0 240 64" role="img" aria-label="ANAND logo">
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="48" viewBox="0 0 180 48" role="img" aria-label="ANAND logo">
   <defs>
-    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#a855f7" />
+    <linearGradient id="editorialGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#3b82f6" />
     </linearGradient>
   </defs>
-  <!-- Monogram A -->
-  <g transform="translate(8,4)">
-    <path d="M16 48 L32 8" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
-    <path d="M48 48 L32 8" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
-    <path d="M24 32 L40 32" stroke="url(#grad)" stroke-width="6" stroke-linecap="round" fill="none" />
-  </g>
-  <!-- Wordmark -->
-  <g transform="translate(80,0)">
-    <text x="0" y="46" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="2">ANAND</text>
-  </g>
+  <!-- Architectural Square Monogram A -->
+  <rect x="2" y="2" width="44" height="44" fill="none" stroke="url(#editorialGrad)" stroke-width="2" />
+  <text x="24" y="34" font-family="'Times New Roman', Times, serif" font-size="30" font-weight="900" text-anchor="middle" fill="#00e5ff">A</text>
+  <!-- Minimalist Wordmark -->
+  <text x="58" y="32" font-family="'Times New Roman', Times, serif" font-size="22" font-weight="700" letter-spacing="4" fill="#ffffff">ANAND</text>
 </svg>

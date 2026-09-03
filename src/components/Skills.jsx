@@ -153,41 +153,49 @@ const Skills = () => {
     {
       title: "Languages",
       skills: [
-        { name: "HTML", icon: SiHtml5, color: "#E34F26" },
-        { name: "CSS", icon: SiCss3, color: "#1572B6" },
-        { name: "Javascript", icon: SiJavascript, color: "#F7DF1E" },
-        { name: "Java", imgSrc: "/assets/java.svg" },
-        { name: "Python", icon: SiPython, color: "#3776AB" }
+        { name: "Python", icon: SiPython, color: "#3776AB" },
+        { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+        { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+        { name: "Java", icon: FaJava, color: "#ED8B00" },
+        { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
+        { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+        { name: "R Language", icon: SiR, color: "#276DC3" }
       ]
     },
     {
-      title: "Libraries and Frameworks",
+      title: "Libraries & Frameworks",
       skills: [
-        { name: "Reactjs", icon: SiReact, color: "#61DAFB" },
-        { name: "Tailwindcss", icon: SiTailwindcss, color: "#06B6D4" },
-        { name: "Framer motion", icon: SiFramer || SiReact, color: "#0055FF" },
+        { name: "React.js", icon: SiReact, color: "#61DAFB" },
+        { name: "Next.js", icon: SiNextdotjs, color: "#00E5FF" },
+        { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+        { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
+        { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
         { name: "Vite", icon: SiVite, color: "#646CFF" }
       ]
     },
     {
-      title: "Backend",
+      title: "Backend & Cloud Engines",
       skills: [
-        { name: "Nodejs", icon: SiNodedotjs, color: "#339933" },
-        { name: "Express", icon: SiExpress || SiNodedotjs, color: "#FFFFFF" }
+        { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+        { name: "Express.js", icon: SiExpress, color: "#00E5FF" },
+        { name: "Flask", icon: SiFlask, color: "#00E5FF" },
+        { name: "Docker", icon: SiDocker, color: "#2496ED" }
       ]
     },
     {
-      title: "Database",
+      title: "Databases & Analytics",
       skills: [
-        { name: "MongoDB", icon: SiMongodb, color: "#47A248" }
+        { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+        { name: "Power BI", imgSrc: "/assets/powerbi.svg" }
       ]
     },
     {
-      title: "Tools and Technologies",
+      title: "Developer Tools",
       skills: [
         { name: "Git", icon: SiGit, color: "#F05032" },
-        { name: "Power BI", imgSrc: "/assets/powerbi.svg" },
-        { name: "VS Code", imgSrc: "/assets/vscode.svg" }
+        { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+        { name: "VS Code", imgSrc: "/assets/vscode.svg" },
+        { name: "Canva", icon: SiCanva, color: "#00C4CC" }
       ]
     }
   ];
@@ -196,33 +204,27 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-24 relative"
+      className="py-28 relative bg-black dark:bg-black theme-light:bg-neutral-50 text-white theme-light:text-black border-t border-neutral-900 theme-light:border-neutral-200"
       data-scroll="section"
-      style={{
-        position: 'relative',
-        zIndex: 10,
-        background: 'var(--section-bg)',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.45)',
-        borderTop: '1px solid var(--section-border)',
-        borderBottom: '1px solid var(--section-border)'
-      }}
     >
-      <div className="container mx-auto px-0">
+      <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-20">
-          <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="scroll-word inline-block">My</span> <span className="scroll-word inline-block text-gradient">Skills</span>
+          <div className="inline-block mb-4 px-4 py-1 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/20">
+            04 // TECHNICAL COMPETENCIES & TOOLING
+          </div>
+          <h2 ref={headingRef} className="text-5xl sm:text-6xl md:text-7xl font-serif font-extrabold mb-6 uppercase tracking-tight">
+            CAPABILITIES & <span className="italic font-normal text-cyan-400">STACK</span>
           </h2>
-          <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full opacity-80" />
-          <p className="text-slate-200 mt-6 max-w-2xl mx-auto text-lg font-semibold">
-            A comprehensive toolkit for building innovative and impactful solutions
+          <p className="text-neutral-400 theme-light:text-neutral-600 max-w-3xl mx-auto text-xl md:text-2xl font-serif leading-relaxed">
+            A comprehensive architectural toolkit spanning languages, machine learning frameworks, and database engines.
           </p>
         </div>
 
         {/* Categorized Skills */}
         <div ref={gridRef} className="mt-16 max-w-6xl mx-auto">
           {skillCategories.map((category) => (
-            <div key={category.title} className="mb-12 last:mb-0">
-              <h3 className="text-2xl font-bold mb-6 text-gradient">
+            <div key={category.title} className="mb-14 last:mb-0">
+              <h3 className="text-2xl font-serif font-bold mb-6 text-cyan-400 tracking-wide uppercase border-b border-neutral-800 theme-light:border-neutral-200 pb-2">
                 {category.title}
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -234,27 +236,26 @@ const Skills = () => {
                   return (
                     <div
                       key={skill.name}
-                      className="reveal-item glass-panel bg-slate-800/60 border border-slate-700/50 rounded-xl px-4 py-3 md:px-5 md:py-3 flex items-center gap-3 hover:-translate-y-0.5 transition-transform duration-200"
-                      style={{ pointerEvents: 'auto' }}
+                      className="reveal-item border border-neutral-800 theme-light:border-neutral-300 bg-neutral-900/60 theme-light:bg-neutral-100/60 px-5 py-4 flex items-center gap-4 hover:border-white/60 transition-all duration-300 group"
                     >
                       {skill.imgSrc ? (
                         <img
                           src={skill.imgSrc}
                           alt={skill.name}
-                          className="h-6 w-6 object-contain shrink-0"
+                          className="h-7 w-7 object-contain shrink-0 group-hover:scale-110 transition-transform duration-300"
                         />
                       ) : (
                         Icon && (
                           <Icon
-                            className="text-2xl shrink-0"
-                            style={{ color: skill.color }}
+                            className="text-3xl shrink-0 group-hover:scale-110 transition-transform duration-300"
+                            style={{ color: skill.color || "#00e5ff" }}
                             aria-label={skill.name}
                             title={skill.name}
                             role="img"
                           />
                         )
                       )}
-                      <span className="text-slate-300 text-sm md:text-base font-semibold">
+                      <span className="text-neutral-200 theme-light:text-neutral-800 text-lg font-serif font-semibold tracking-wide group-hover:text-white transition-colors">
                         {skill.name}
                       </span>
                     </div>

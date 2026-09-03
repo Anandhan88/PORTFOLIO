@@ -98,35 +98,18 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
       initial={{ y: 0 }}
       animate={{ y: isHeaderVisible ? 0 : -80 }}
       transition={{ duration: 0.35, ease: 'easeInOut' }}
-      className="fixed top-0 left-0 right-0 z-50 glass-nav"
-      style={{
-        position: 'fixed',
-        transformStyle: 'preserve-3d',
-        perspective: '1000px'
-      }}
+      className="fixed top-0 left-0 right-0 z-50 bg-black/80 dark:bg-black/80 theme-light:bg-white/80 backdrop-blur-md border-b border-neutral-800 theme-light:border-neutral-200"
     >
-      <div className="w-full px-4 md:px-10 py-2.5">
-        <div className="flex items-center justify-end gap-2 md:gap-4 w-full">
+      <div className="w-full px-6 md:px-12 py-3.5">
+        <div className="flex items-center justify-between gap-4 w-full">
           <motion.div
-            initial={{ opacity: 0, x: -20, rotateY: -15 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            whileHover={{ 
-              scale: 1.05,
-              rotateY: 5,
-              z: 20,
-              transition: { duration: 0.3 }
-            }}
-            className="text-2xl font-bold tracking-tighter cursor-pointer relative hidden md:block mr-6"
+            className="cursor-pointer relative flex items-center"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{
-              transformStyle: 'preserve-3d',
-              textShadow: '0 4px 12px rgba(6, 182, 212, 0.4), 0 0 20px rgba(56, 189, 248, 0.3)'
-            }}
           >
-            <AnandLogo
-              className="h-10 w-auto"
-            />
+            <AnandLogo className="h-10 w-auto dark-logo-filter" />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -137,34 +120,24 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
               pointerEvents: navVisible ? 'auto' : 'none',
               transition: 'opacity 0.25s ease, transform 0.25s ease',
             }}
-            className="hidden md:flex items-center space-x-1 relative ml-auto pr-2 md:pr-4"
+            className="hidden md:flex items-center space-x-2 relative ml-auto pr-2"
           >
-            {navItems.map((item, index) => (
+            {navItems.map((item) => (
               <motion.a
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={() => { scrollToSection(item.id); }}
-                whileHover={{ 
-                  scale: 1.08,
-                  y: -4,
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ scale: 0.95 }}
-                className={`nav-button relative px-4 py-2 rounded-full text-sm font-medium z-10 transition-all duration-300 ${
+                whileHover={{ y: -2 }}
+                className={`nav-button relative px-4 py-2 text-base font-serif tracking-wide transition-all duration-300 ${
                   activeSection === item.id && item.id !== 'home'
-                    ? 'text-white nav-button-active'
-                    : 'text-slate-300 hover:text-cyan-400'
+                    ? 'text-cyan-400 font-bold'
+                    : 'text-neutral-400 hover:text-white theme-light:text-neutral-600 theme-light:hover:text-black'
                 }`}
               >
                 {activeSection === item.id && item.id !== 'home' && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 rounded-full -z-10"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(56, 189, 248, 0.15))',
-                      border: '1px solid rgba(6, 182, 212, 0.5)',
-                      boxShadow: '0 8px 16px rgba(6, 182, 212, 0.25), 0 0 30px rgba(56, 189, 248, 0.2), inset 0 1px 1px rgba(6, 182, 212, 0.3)'
-                    }}
+                    className="absolute inset-0 border-b-2 border-cyan-400 -z-10"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -175,33 +148,17 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
               variant="diamond"
               theme={theme}
               onToggle={onToggleTheme}
-              className="ml-2"
+              className="ml-4"
             />
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            whileTap={{ scale: 0.9, rotateZ: -5 }}
-            whileHover={{ 
-              scale: 1.1,
-              rotateY: 10,
-              z: 20,
-              boxShadow: '0 8px 20px rgba(6, 182, 212, 0.3), 0 0 30px rgba(56, 189, 248, 0.2)'
-            }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden ml-auto text-white p-2 rounded-lg hover:bg-slate-800/50 transition-colors relative"
-            style={{
-              transformStyle: 'preserve-3d',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(6, 182, 212, 0.2)'
-            }}
+            className="md:hidden ml-auto p-2 border border-neutral-800 rounded text-neutral-200"
           >
             <SafeIcon icon={isMenuOpen ? FiX : FiMenu} className="w-6 h-6" />
-            <div 
-              className="absolute inset-0 rounded-lg border border-cyan-500/30 pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), transparent)'
-              }}
-            />
           </motion.button>
         </div>
 
@@ -209,46 +166,26 @@ const Header = ({ activeSection, theme = 'dark', onToggleTheme }) => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.nav
-              initial={{ opacity: 0, height: 0, marginTop: 0, rotateX: -15, z: -50 }}
-              animate={{ opacity: 1, height: 'auto', marginTop: 16, rotateX: 0, z: 0 }}
-              exit={{ opacity: 0, height: 0, marginTop: 0, rotateX: -15, z: -50 }}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden border-t border-slate-800"
-              style={{
-                transformStyle: 'preserve-3d',
-                boxShadow: '0 10px 30px rgba(6, 182, 212, 0.15), inset 0 1px 1px rgba(6, 182, 212, 0.1)'
-              }}
+              className="md:hidden overflow-hidden border-t border-neutral-800 mt-3 pt-3"
             >
-              <div className="py-2 space-y-1">
+              <div className="py-2 space-y-2">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={() => { scrollToSection(item.id); }}
-                    initial={{ opacity: 0, x: -20, z: -30 }}
-                    animate={{ opacity: 1, x: 0, z: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    whileHover={{ 
-                      x: 5,
-                      z: 10,
-                      rotateY: 2,
-                      boxShadow: '0 6px 15px rgba(6, 182, 212, 0.25), 0 0 20px rgba(56, 189, 248, 0.2)'
-                    }}
-                    whileTap={{ scale: 0.98, z: -5 }}
-                    className={`block w-full text-left px-4 py-3 rounded-xl transition-all relative ${
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.04 }}
+                    className={`block w-full text-left px-4 py-2 text-lg font-serif tracking-wide transition-all ${
                       activeSection === item.id
-                        ? 'bg-gradient-to-r from-cyan-600/20 to-teal-600/20 text-cyan-400 border border-cyan-500/30'
-                        : 'text-slate-400 hover:text-white hover:bg-slate-800/50 border border-transparent'
+                        ? 'text-cyan-400 font-bold border-l-2 border-cyan-400 pl-3'
+                        : 'text-neutral-400 hover:text-white'
                     }`}
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      boxShadow: activeSection === item.id 
-                        ? '0 4px 12px rgba(6, 182, 212, 0.2), inset 0 1px 1px rgba(6, 182, 212, 0.2)'
-                        : '0 2px 6px rgba(0, 0, 0, 0.1)',
-                      textShadow: activeSection === item.id 
-                        ? '0 2px 8px rgba(6, 182, 212, 0.4)'
-                        : 'none'
-                    }}
                   >
                     {item.label}
                   </motion.a>

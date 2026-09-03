@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap');
+
 /* Ensure interactive elements always receive pointer events */
 button,
 a,
@@ -13,65 +15,57 @@ a,
 @tailwind utilities;
 
 :root {
-  --primary-gold: #fbbf24;
-  --accent-amber: #f59e0b;
-  --deep-orange: #ea580c;
-  --warm-yellow: #fde047;
-  --dark-bronze: #92400e;
-  --bg-main: #000000;
-  --text-main: #ffffff;
-  --section-bg: linear-gradient(180deg, rgba(6, 10, 22, 0.15), rgba(6, 10, 22, 0.1));
-  --section-border: rgba(255, 255, 255, 0.04);
+  --primary-gold: #ffffff;
+  --accent-amber: #e2e8f0;
+  --deep-orange: #a3a3a3;
+  --warm-yellow: #f5f4f0;
+  --dark-bronze: #404040;
+  --bg-main: #0a0a0a;
+  --text-main: #f5f4f0;
+  --section-bg: #0d0d0d;
+  --section-border: rgba(255, 255, 255, 0.08);
 }
 
 .theme-light {
-  --bg-main: #f5f7fb;
-  --text-main: #0b1220;
-  --section-bg: linear-gradient(180deg, rgba(247, 249, 252, 0.08), rgba(238, 242, 247, 0.08));
-  --section-border: rgba(15, 23, 42, 0.08);
+  --bg-main: #f9f8f6;
+  --text-main: #111111;
+  --section-bg: #f2f0eb;
+  --section-border: rgba(0, 0, 0, 0.1);
 }
 
-/* Logo filter for light mode - invert colors to make it visible */
+/* Logo filter for light mode */
 .theme-light .dark-logo-filter {
-  filter: invert(1) hue-rotate(180deg) brightness(0.9);
+  filter: invert(1) brightness(0.2);
 }
 
 /* Footer styling for light mode */
 .theme-light footer {
-  background: linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%) !important;
-  border-top-color: #94a3b8 !important;
+  background: #f2f0eb !important;
+  border-top-color: #e2ded4 !important;
 }
 
 .theme-light footer h3,
 .theme-light footer p,
 .theme-light footer a,
 .theme-light footer li {
-  color: #0f172a !important;
+  color: #111111 !important;
 }
 
 .theme-light footer a:hover {
-  color: #3b82f6 !important;
-}
-
-.theme-light footer .bg-slate-900 {
-  background: #f1f5f9 !important;
-  border-color: #cbd5e1 !important;
+  color: #c59b27 !important;
 }
 
 .theme-light body,
 .theme-light html {
-  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08), transparent 32%),
-              radial-gradient(circle at 80% 30%, rgba(14, 165, 233, 0.08), transparent 30%),
-              linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
+  background: #f9f8f6;
 }
 
 html {
   scroll-behavior: smooth;
   background: var(--bg-main);
-  background-attachment: scroll;
-  perspective: none;
   position: relative;
   color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
 }
 
 /* Ensure anchored scroll accounts for fixed header */
@@ -84,29 +78,32 @@ body {
   color: var(--text-main);
   margin: 0;
   padding: 0;
-  font-size: 1.15rem; /* bump base size for stronger readability */
-  font-weight: 500; /* reduce global weight to avoid over-bold */
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Brighten and embolden core text elements for higher contrast */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Bright readable high contrast content */
 p,
 li,
 label,
 input,
 textarea,
 span,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+div {
   color: var(--text-main);
-  font-weight: 500; /* soften default content weight */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
 }
 
 /* Futuristic circuit board background - optimized */

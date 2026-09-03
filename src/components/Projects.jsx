@@ -155,38 +155,30 @@ const Projects = () => {
     <section
       ref={containerRef}
       id="projects"
-      className="py-24 relative"
+      className="py-28 relative bg-neutral-950 dark:bg-neutral-950 theme-light:bg-neutral-100 text-white theme-light:text-black border-t border-neutral-900 theme-light:border-neutral-200"
       data-scroll="section"
-      style={{
-        position: 'relative',
-        zIndex: 10,
-        background: 'var(--section-bg)',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.45)',
-        borderTop: '1px solid var(--section-border)',
-        borderBottom: '1px solid var(--section-border)'
-      }}
     >
-      <div className="container mx-auto px-0">
+      <div className="container mx-auto px-4">
         <motion.div initial={false}>
           <div className="text-center mb-20">
-            <h2 ref={headingRef} className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="scroll-word inline-block">My</span> <span className="scroll-word inline-block text-gradient">Projects</span>
+            <div className="inline-block mb-4 px-4 py-1 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/20">
+              03 // SELECTED WORKS & SYSTEM PLATFORMS
+            </div>
+            <h2 ref={headingRef} className="text-5xl sm:text-6xl md:text-7xl font-serif font-extrabold mb-6 uppercase tracking-tight">
+              ENGINEERED <span className="italic font-normal text-cyan-400">PROJECTS</span>
             </h2>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full opacity-80" />
-            <p className="text-slate-200 mt-6 max-w-2xl mx-auto text-lg font-semibold">
-              Showcasing innovative solutions that blend creativity with cutting-edge technology
+            <p className="text-neutral-400 theme-light:text-neutral-600 max-w-3xl mx-auto text-xl md:text-2xl font-serif leading-relaxed">
+              Demonstrating production-grade applications, deep learning engines, and web architectures.
             </p>
           </div>
 
-          <div className="relative w-full px-4 md:px-12">
+          <div className="relative w-full px-2 md:px-10">
             <div 
               ref={scrollContainerRef}
               className="grid grid-flow-col auto-cols-[100%] md:auto-cols-[calc(50%-16px)] lg:auto-cols-[calc(33.333%-21.3px)] overflow-x-auto gap-8 pb-8 scrollbar-hide"
               style={{ 
-                perspective: '1500px', 
-                transformStyle: 'preserve-3d',
                 scrollSnapType: 'x mandatory',
-                scrollbarWidth: 'none' // Hide scrollbar for Firefox
+                scrollbarWidth: 'none'
               }}
             >
               {projects.map((project, index) => (
@@ -194,67 +186,31 @@ const Projects = () => {
                   key={project.id}
                   data-project="card"
                   initial={false}
-                  whileHover={{
-                    y: -12,
-                    z: 30,
-                    rotateX: 5,
-                    rotateY: 3,
-                    scale: 1.03,
-                    transition: { duration: 0.3 }
-                  }}
-                  whileTap={{ scale: 0.97, z: 10 }}
-                  className={`group relative glass-panel rounded-3xl p-8 border transition-all duration-300 h-full flex flex-col ${getColorClass(project.color)}`}
+                  whileHover={{ y: -8 }}
+                  className="group relative border border-neutral-800 theme-light:border-neutral-300 bg-neutral-900/60 theme-light:bg-neutral-50 p-8 transition-all duration-300 h-full flex flex-col hover:border-cyan-400/60"
                   style={{
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 15px 35px rgba(6, 182, 212, 0.15), 0 5px 15px rgba(0, 0, 0, 0.3)',
                     scrollSnapAlign: 'start'
                   }}
                 >
-                  {/* Glow Effect */}
-                  <div className={`absolute -inset-0.5 rounded-3xl bg-gradient-to-br opacity-0 group-hover:opacity-30 transition duration-500 blur-xl pointer-events-none ${
-                    project.color === 'emerald' ? 'from-emerald-600 to-teal-600' : 
-                    project.color === 'pink' ? 'from-pink-600 to-purple-600' : 
-                    project.color === 'purple' ? 'from-purple-600 to-indigo-600' : 
-                    project.color === 'cyan' ? 'from-cyan-600 to-blue-600' : 
-                    project.color === 'amber' ? 'from-amber-600 to-orange-600' : 
-                    'from-blue-600 to-cyan-600'
-                  }`} />
-
                   <div className="relative z-10 flex flex-col h-full justify-between flex-grow">
                     <div className="flex-grow flex flex-col mb-6">
-                      <div className="flex justify-between items-start mb-6">
-                        <motion.div 
-                          whileHover={{ scale: 1.25, rotate: [0, -10, 10, -10, 0], transition: { duration: 0.6 } }}
-                          className={`p-3 rounded-2xl ${
-                          project.color === 'emerald' ? 'bg-emerald-500/20 text-emerald-400' : 
-                          project.color === 'pink' ? 'bg-pink-500/20 text-pink-400' : 
-                          project.color === 'purple' ? 'bg-purple-500/20 text-purple-400' : 
-                          project.color === 'cyan' ? 'bg-cyan-500/20 text-cyan-400' : 
-                          project.color === 'amber' ? 'bg-amber-500/20 text-amber-400' : 
-                          'bg-blue-500/20 text-blue-400'
-                        }`}>
-                          <SafeIcon icon={project.icon} className="w-8 h-8" />
-                        </motion.div>
-                        <div className="flex gap-2">
-                          <SafeIcon icon={FiLayers} className="w-5 h-5 text-slate-500" />
+                      <div className="flex justify-between items-center mb-6 border-b border-neutral-800 theme-light:border-neutral-200 pb-4">
+                        <span className="text-3xl font-serif font-bold text-cyan-400">
+                          0{index + 1}
+                        </span>
+                        <div className="p-2 border border-neutral-800 theme-light:border-neutral-300 text-neutral-400">
+                          <SafeIcon icon={project.icon} className="w-6 h-6 text-cyan-400" />
                         </div>
                       </div>
 
-                      <h3 className="text-2xl font-bold text-slate-300 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-400 transition-all">
+                      <h3 className="text-2xl font-serif font-bold text-white theme-light:text-black mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">
                         {project.title}
                       </h3>
-                      <p className={`text-sm font-semibold mb-4 tracking-wide uppercase opacity-80 ${
-                        project.color === 'emerald' ? 'text-emerald-400' : 
-                        project.color === 'pink' ? 'text-pink-400' : 
-                        project.color === 'purple' ? 'text-purple-400' : 
-                        project.color === 'cyan' ? 'text-cyan-400' : 
-                        project.color === 'amber' ? 'text-amber-400' : 
-                        'text-blue-400'
-                      }`}>
+                      <p className="text-xs font-mono tracking-widest text-cyan-400/80 mb-4 uppercase">
                         {project.subtitle}
                       </p>
 
-                      <p className="text-slate-300 leading-relaxed text-base tracking-wide flex-grow">
+                      <p className="text-neutral-300 theme-light:text-neutral-700 leading-relaxed text-base font-serif flex-grow">
                         {project.description}
                       </p>
                     </div>
@@ -265,21 +221,21 @@ const Projects = () => {
                           <span
                             key={i}
                             data-project="tech-badge"
-                            className="px-3 py-1 rounded-full text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700/50"
+                            className="px-3 py-1 text-xs font-mono text-neutral-300 theme-light:text-neutral-700 border border-neutral-800 theme-light:border-neutral-300 bg-neutral-950/40"
                           >
                             {tech}
                           </span>
                         ))}
                       </div>
 
-                      <div className="flex gap-4 pt-4 border-t border-slate-700/50">
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" data-anim="primary-btn" className="btn-3d flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-blue-600/40 hover:shadow-lg hover:shadow-blue-500/30 text-slate-300 hover:text-white text-sm font-medium transition-all duration-300">
-                          <SafeIcon icon={FiExternalLink} data-anim="btn-icon" className="w-4 h-4" />
-                          Live Demo
+                      <div className="flex gap-4 pt-4 border-t border-neutral-800 theme-light:border-neutral-200">
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black text-sm font-serif font-bold tracking-wider transition-all">
+                          <SafeIcon icon={FiExternalLink} className="w-4 h-4" />
+                          DEMO
                         </a>
-                        <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" data-anim="primary-btn" className="btn-3d flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-cyan-400 text-sm font-medium transition-colors">
-                          <SafeIcon icon={FiGithub} data-anim="btn-icon" className="w-4 h-4" />
-                          Code
+                        <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-neutral-800 theme-light:border-neutral-300 text-neutral-300 theme-light:text-neutral-700 hover:border-cyan-400 hover:text-cyan-400 text-sm font-serif font-bold tracking-wider transition-colors">
+                          <SafeIcon icon={FiGithub} className="w-4 h-4" />
+                          CODE
                         </a>
                       </div>
                     </div>
@@ -296,7 +252,7 @@ const Projects = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={() => scroll('left')}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.35)] transition-all z-30 animate-pulse-glow"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 p-3 bg-black theme-light:bg-white border border-neutral-800 theme-light:border-neutral-300 text-white theme-light:text-black hover:border-white transition-all z-30"
                   aria-label="Scroll left"
                 >
                   <SafeIcon icon={FiChevronLeft} className="w-6 h-6" />
@@ -311,7 +267,7 @@ const Projects = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={() => scroll('right')}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700/60 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(6,182,212,0.35)] transition-all z-30 animate-pulse-glow"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 p-3 bg-black theme-light:bg-white border border-neutral-800 theme-light:border-neutral-300 text-white theme-light:text-black hover:border-white transition-all z-30"
                   aria-label="Scroll right"
                 >
                   <SafeIcon icon={FiChevronRight} className="w-6 h-6" />
